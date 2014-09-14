@@ -1,4 +1,4 @@
 echo "==============Pre-processing=============="
 echo "  This is a demo for pre-processing configs."
-sox -S $1".wav.1" $1".wav" highpass 150
+sox -S $1".wav.1" $1".wav" highpass 50
 
