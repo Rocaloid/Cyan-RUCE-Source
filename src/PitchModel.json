@@ -1,0 +1,79 @@
+{
+    "Entries" :
+    [
+        {
+            "Wildcard" : "*",
+            "Inherit" : "none",
+            
+            "LDecay_F0" : 240,
+            "LDecay_Sensitivity" : 0.02,
+            "LDecay_Center" : 4000,
+            "LDecay_Bound" : 9000,
+            "HDecay_F0" : 400,
+            "HDecay_Sensitivity" : -0.002,
+            "HDecay_Center" : 10000,
+            "HDecay_Bound" : 20000,
+            
+            "HmncCurve" : [700, 0.0,
+                           360, 0.0,
+                           260, 0.0,
+                           150, -1.0,
+                           0.0, -2.0],
+            "NoizCurve" : [700, -0.5,
+                           300, 0.0,
+                           200, -0.3,
+                           150, -0.8,
+                           0.0, -2.0],
+            "PhseCurve" : [700, 1.7,
+                           360, 1.0,
+                           260, 1.0,
+                           200, 0.5,
+                           150, 0.2,
+                           0.0, 0.0]
+        },
+        
+        {
+            "Wildcard" : "*ie",
+            "Inherit" : "*",
+            
+            "NoizCurve" : [700, -1.5,
+                           300, 0.5,
+                           200, 0.5,
+                           150, 0.0,
+                           0.0, -1.0]
+        }
+    ]
+}
+/*
+    An example of RUCE Pitch-HSS adjustment configuration.
+    
+    PitchModel.json specifies the Harmonic Spectral Shape adjustment in relation
+with fundamental frequency for each or each group of vocal unit.
+    
+    For each entry, "Wildcard" specifies the group of units that the entry
+applies to. To minimize duplicate information, "Inherit" can be set to the
+"Wildcard" of an entry defined previously.
+
+    Parameters start with LDecay depict an asymmetric triangular spectral cavity
+centered in "LDecay_Center" and extended from 0 hertz to "LDecay_Bound" hertz.
+This setting is enabled when the instantaneous fundamental frequency exceeds the
+lower limit, as described in "LDecay_F0". The cavity is deepened by logarithmic
+amplitude of "LDecay_Sensitivity" every hertz the fundamental frequency is
+larger than "LDecay_F0". The same function applies to parameters start with
+HDecay except those are only enabled when fundamental frequency is larger than
+"HDecay_F0".
+
+    "HmncCurve", "NoizCurve", and "PhseCurve" are three independent control
+point parameter sets. When aligned in the following format, the first row is
+fundamental frequency; the second is the value on that particular control point.
+
+    Values of "HmncCurve" indicate the amplification of sinusoidal component at
+different fundamental frequencies, also in logarithmic amplitude.
+
+    Values of "NoizCurve" are similar to "HmncCurve", except they describe the
+noise(or breath) component.
+
+    Values of "PhseCurve" indicate the synchronicity of instantaneous phase of
+harmonics, or the "flatness" of phase spectrum at voice pulses. Usually lower at
+high pitches, and vice versa.
+*/
