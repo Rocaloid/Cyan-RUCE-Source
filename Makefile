@@ -14,10 +14,6 @@ soundbank.utau : $(RUDBList) oto.ini
 
 include src/postmakes.make
 
-%.rudb.1 : %.wav
-	  genrudb $*.wav -V
-	@ mv $*.rudb $@
-
 include src/premakes.make
 
 oto.ini : $(WavList)
@@ -35,18 +31,15 @@ oto.ini : $(WavList)
 src/%.pre :
 	@ touch $@
 
-%.wav.1 :
-	@ echo ""
-
 sound.wav : | src/sound.ogg
 	sox src/sound.ogg sound.wav
 	rsegment sound.wav src/label src/reclist
 	@ mv sound.wav sound.wxx
 	@ for i in *.wav; do \
-		wavnorm $$i -g 1.5 -i -40 -t -s 0.01 -e 0.01; \
-		mv $$i $$i.1; \
+		mv $$i $$i'1'; \
 	  done
 	@ mv sound.wxx sound.wav
+#		wavnorm $$i -g 1.5 -i -40 -t -s 0.01 -e 0.01; \
 
 .PHONY : install
 install : $(RUDBList)

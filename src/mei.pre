@@ -1,2 +1,0 @@
-sox mei.wav.1 mei.wav trim 0.150
-
