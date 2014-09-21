@@ -10,6 +10,14 @@ fei.rudb : fei.rudb1
 	@ cp fei.rudb1 fei.rudb
 	  editrudb param fei.rudb -r 1.048
 
+hao.rudb : hao.rudb1
+	@ cp hao.rudb1 hao.rudb
+	  editrudb param hao.rudb -r 0.64
+
+wei.rudb : wei.rudb1
+	@ cp wei.rudb1 wei.rudb
+	  editrudb param wei.rudb -r 0.7
+
 m%.rudb : m%.rudb1
 	@ cp m$*.rudb1 $@
 	  editrudb notchnoise $@ -h 0 -s 0.03 -r 0.07
