@@ -10,9 +10,16 @@ fei.rudb : fei.rudb1
 	@ cp fei.rudb1 fei.rudb
 	  editrudb param fei.rudb -r 1.048
 
+gan.rudb : gan.rudb1
+	@ cp gan.rudb1 gan.rudb
+	  editrudb param gan.rudb -r 0.607
+
 hao.rudb : hao.rudb1
 	@ cp hao.rudb1 hao.rudb
 	  editrudb param hao.rudb -r 0.64
+
+hei.rudb : hei.rudb1
+	@ cp hei.rudb1 hei.rudb
 
 wei.rudb : wei.rudb1
 	@ cp wei.rudb1 wei.rudb
