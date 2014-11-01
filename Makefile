@@ -1,4 +1,4 @@
-RecList = $(shell cat src/reclist)
+RecList = $(shell cat src/reclist.txt)
 WavList = $(RecList:%=%.wav)
 RUDBList = $(RecList:%=%.rudb)
 
@@ -33,39 +33,38 @@ src/%.pre :
 
 sound.wav : | src/sound.ogg
 	sox src/sound.ogg sound.wav
-	rsegment sound.wav src/label src/reclist
+	rsegment sound.wav src/label.txt src/reclist.txt
 	@ mv sound.wav sound.wxx
 	@ for i in *.wav; do \
 		mv $$i $$i'1'; \
 	  done
 	@ mv sound.wxx sound.wav
-#		wavnorm $$i -g 1.5 -i -40 -t -s 0.01 -e 0.01; \
 
 .PHONY : install
 install : $(RUDBList)
 	@ echo "Moving files..."
-	@ mkdir build
-	@ cp *.rudb build/
-	@ cp src/PitchModel.json build/
+	@ mkdir build -p
+	@ cp *.rudb build/ -u
+	@ cp src/PitchModel.json build/ -u
 	@ echo "Soundbank generated in 'build' directory."
 
 .PHONY : install.utau
 install.utau : $(RUDBList) oto.ini
 	@ echo "Moving files..."
-	@ mkdir build
-	@ cp oto.ini build/
-	@ cp *.rudb build/
-	@ cp src/PitchModel.json build/
+	@ mkdir build -p
+	@ cp oto.ini build/ -u
+	@ cp *.rudb build/ -u
+	@ cp src/PitchModel.json build/ -u
 	@ echo "UTAU Soundbank generated in 'build' directory."
 
 .PHONY : install.utauall
 install.utauall : $(RUDBList) oto.ini
 	@ echo "Moving files..."
-	@ mkdir build
-	@ cp oto.ini build/
-	@ cp *.rudb build/
-	@ cp *.wav build/
-	@ cp src/PitchModel.json build/
+	@ mkdir build -p
+	@ cp oto.ini build/ -u
+	@ cp *.rudb build/ -u
+	@ cp *.wav build/ -u
+	@ cp src/PitchModel.json build/ -u
 	@ echo "Complete UTAU Soundbank generated in 'build' directory."
 
 .PHONY : clean
