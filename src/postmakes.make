@@ -15,11 +15,11 @@ ka.rudb1 : ka.wav
 	@ mv ka.rudb ka.rudb1
 
 zhe.rudb1 : zhe.wav
-	  genrudb zhe.wav -a 0 -V
+	  genrudb zhe.wav -V
 	@ mv zhe.rudb zhe.rudb1
 
 zhi.rudb1 : zhi.wav
-	  genrudb zhi.wav -a 0 -V
+	  genrudb zhi.wav -V
 	@ mv zhi.rudb zhi.rudb1
 
 fei.rudb : fei.rudb1
